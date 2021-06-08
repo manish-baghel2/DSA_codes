@@ -2,3 +2,5 @@ this is the first sample file
 
 
 just edited it again and learning the git user interface
+
+now i am adding just random things
