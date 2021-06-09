@@ -1,0 +1,1 @@
+{"name":"Local: codetest","url":"c:\\Users\\Manish Baghel\\Documents\\programs\\practise\\codetest.cpp","tests":[{"id":1622561100977,"input":"4 4\n1 4 7 11\n2 5 8 12\n3 6 9 16\n10 13 14 17\n5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Manish Baghel\\Documents\\programs\\practise\\codetest.cpp","group":"local","local":true}
