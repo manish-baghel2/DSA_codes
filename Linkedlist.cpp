@@ -76,10 +76,29 @@ node* reverserecursion(node* &head)
     
 }
 
+node* reversek(node* &head, int k)
+{
+    node* prev = NULL;
+    node* curr = head;
+    node* next;
+    int count=0;
+    while(curr != NULL && count<k)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+        count++;
+    }
+    if(next !=NULL ){
+        head->next = reversek(next, k);
+    }
+    return prev;
+}
+
 int main()
 {
    node* head = NULL;
-   insertatstart(head, 0);
    insertatend(head, 1);
    insertatend(head, 2);
    insertatend(head, 3);
@@ -87,6 +106,8 @@ int main()
    insertatend(head, 5);
    insertatend(head, 6);
    display(head);
-   node* newhead = reverserecursion(head);
+   int k=2;
+   node* newhead = reversek(head, k);
    display(newhead);
+    return 0;
 }
