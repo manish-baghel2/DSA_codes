@@ -81,7 +81,7 @@ node* reversek(node* &head, int k)
     node* prev = NULL;
     node* curr = head;
     node* next;
-    int count=0;
+    int count=0;  
     while(curr != NULL && count<k)
     {
         next = curr->next;
@@ -96,6 +96,25 @@ node* reversek(node* &head, int k)
     return prev;
 }
 
+// detection of cycle (** floyds algorithm or hare and tortoise algorithm)
+bool detection (node* &head)
+{
+    node* temp = head;
+    node* t = head;
+    node* h = head;
+    while (temp!=NULL)
+    {
+        t =  head->next;
+        h = head->next->next;
+        if(t->data == h->data)
+        {
+            return true;
+        }
+        temp = temp->next;
+    }
+    return false;
+}
+
 int main()
 {
    node* head = NULL;
@@ -106,8 +125,9 @@ int main()
    insertatend(head, 5);
    insertatend(head, 6);
    display(head);
-   int k=2;
-   node* newhead = reversek(head, k);
-   display(newhead);
-    return 0;
+//    int k=2;
+//    node* newhead = reversek(head, k);
+//    display(newhead);
+   cout<<detection(head)<<endl;
+   return 0;
 }
