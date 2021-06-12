@@ -104,8 +104,8 @@ bool detection (node* &head)
     node* h = head;
     while (temp!=NULL)
     {
-        t =  head->next;
-        h = head->next->next;
+        t =  t->next;
+        h = h->next->next;
         if(t->data == h->data)
         {
             return true;
