@@ -96,7 +96,7 @@ node* reversek(node* &head, int k)
     return prev;
 }
 
-// detection of cycle (** floyds algorithm or hare and tortoise algorithm)
+// detection of cycle (**floyds algorithm or hare and tortoise algorithm**)
 bool detection (node* &head)
 {
     node* temp = head;
@@ -114,6 +114,41 @@ bool detection (node* &head)
     }
     return false;
 }
+// making a loop in linked list for testing algorithm of deleting the loop
+void makeloop(node* &head, int val1)
+{
+    node* start;
+    node* temp = head;
+    while(temp->next !=NULL)
+    {
+        if(temp->data == val1)
+        {
+            start = temp;
+        }
+        temp=temp->next;
+    }
+    temp->next= start;
+
+}
+
+// removing a loop from a linked list
+void removeloop(node* &head)
+{
+    node* slow = head;
+    node* fast = head;
+    do
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }while(slow != fast);
+    fast = head;
+    while(slow->next != fast->next)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+    slow->next = NULL;
+}
 
 int main()
 {
@@ -124,10 +159,19 @@ int main()
    insertatend(head, 4);
    insertatend(head, 5);
    insertatend(head, 6);
+   insertatend(head, 7);
+   insertatend(head, 8);
+   insertatend(head, 9);
+   insertatend(head, 10);
+   insertatend(head, 11);
    display(head);
+   makeloop(head, 5);
+//    display(head);
 //    int k=2;
 //    node* newhead = reversek(head, k);
 //    display(newhead);
    cout<<detection(head)<<endl;
+   removeloop(head);
+   cout<<detection(head);
    return 0;
 }
