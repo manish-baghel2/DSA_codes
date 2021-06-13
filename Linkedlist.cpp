@@ -149,37 +149,37 @@ void removeloop(node* &head)
     }
     slow->next = NULL;
 }
-// append last k nodes
+// append last k nodes  (** improved **)
 void appendknodes(node* &head, int k)
 {
     node* newhead;
-    node* temp = head;
+    node* newtail;
+    node* tail = head;
     int count=0;
-    while(temp != NULL)
+    while(tail != NULL)
     {
-        temp=temp->next;
+        tail= tail->next;
         count++;
     }
-    temp = head;
-    count = count - k;
-    do
+    tail = head;
+    int l=1;
+    k=k%count;
+    while(tail->next != NULL)
     {
-        temp = temp->next;
-        count--;
-        cout<<temp->data<<" ";
-    }while(temp->next != NULL && count != 2);
-    cout<<temp->data;
-    cout<<endl;
-    newhead=temp->next->next;
-    temp->next->next = NULL;
-    temp = newhead;
-    while(temp->next != NULL)
-    {
-        temp = temp->next;
+        if(l == count-k)
+        {
+            newtail = tail;
+        }
+        if(l == count-k +1)
+        {
+            newhead = tail;
+        }
+        tail = tail->next;
+        l++;
     }
-    temp->next = head;
+    tail->next = head;
+    newtail->next = NULL;
     head = newhead;
-
 }
 
 int main()
@@ -206,7 +206,7 @@ int main()
 //    removeloop(head);
 //    display(head);
 //    cout<<detection(head);
-//    appendknodes(head, 3);
-//    display(head);
+   appendknodes(head, 3);
+   display(head);
    return 0;
 }
