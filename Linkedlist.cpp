@@ -172,6 +172,7 @@ int main()
 //    display(newhead);
    cout<<detection(head)<<endl;
    removeloop(head);
+   display(head);
    cout<<detection(head);
    return 0;
 }
