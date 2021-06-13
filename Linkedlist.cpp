@@ -149,6 +149,7 @@ void removeloop(node* &head)
     }
     slow->next = NULL;
 }
+// append last k nodes
 
 int main()
 {
