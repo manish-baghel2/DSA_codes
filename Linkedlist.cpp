@@ -30,6 +30,7 @@ void insertatend(node* &head, int val)
     temp->next = n;
 }
 
+// display the whole linked list
 void display(node* head)
 {
     while(head != NULL)
@@ -150,31 +151,31 @@ void removeloop(node* &head)
     slow->next = NULL;
 }
 // append last k nodes  (** improved **)
-void appendknodes(node* &head, int k)
-{
-    node* newhead;
-    node* newtail;
-    node* tail = head;
-    int count=counting(head);
-    int l=1;
-    k=k%count;
-    while(tail->next != NULL)
-    {
-        if(l == count-k)
-        {
-            newtail = tail;
-        }
-        if(l == count-k +1)
-        {
-            newhead = tail;
-        }
-        tail = tail->next;
-        l++;
-    }
-    tail->next = head;
-    newtail->next = NULL;
-    head = newhead;
-}
+// void appendknodes(node* &head, int k)
+// {
+//     node* newhead;
+//     node* newtail;
+//     node* tail = head;
+//     int count=counting(head);
+//     int l=1;
+//     k=k%count;
+//     while(tail->next != NULL)
+//     {
+//         if(l == count-k)
+//         {
+//             newtail = tail;
+//         }
+//         if(l == count-k +1)
+//         {
+//             newhead = tail;
+//         }
+//         tail = tail->next;
+//         l++;
+//     }
+//     tail->next = head;
+//     newtail->next = NULL;
+//     head = newhead;
+// }
 
 // counting the number of elements in a linked list
 int counting(node* head)
@@ -188,9 +189,54 @@ int counting(node* head)
     return l;
 }
 
+// intersecting two linked lists
+void intersectat(node* &head, node* &head2, int k)
+{
+    node* temp = head;
+    node* temp2 = head2;
+    int length = counting(head);
+    length = length-k;
+    for(int i=1;i<=length;i++)
+    {
+        temp = temp->next;
+    }
+    while(temp2->next != NULL)
+    {
+        temp2 = temp2->next;
+    }
+    temp2->next = temp;
+}
+
+// find the intersection between the two lists
+void intersectionpoint(node* &head, node* &head2, int k)
+{
+    int l1 = counting(head);
+    int l2 = counting(head2);
+    node* ptr1;
+    node* ptr2;
+    int d;
+    if(l1>l2)
+    {
+        ptr1 = head;
+        ptr2 = head2;
+        d= l1-l2;
+    }else
+    {
+        ptr1 = head2;
+        ptr2 = head;
+        d = l2-l1;
+    }
+    for(int i=0;i<d; i++)
+    {
+        ptr1 = ptr1->next;
+    }
+    cout<<ptr1->data<<endl;
+}
+
 int main()
 {
    node* head = NULL;
+   node* head2 = NULL;
    insertatend(head, 1);
    insertatend(head, 2);
    insertatend(head, 3);
@@ -202,7 +248,11 @@ int main()
    insertatend(head, 9);
    insertatend(head, 10);
    insertatend(head, 11);
-   display(head);
+   insertatend(head2, 12);
+   insertatend(head2, 13);
+   intersectat(head, head2, 3);
+   display(head2);
+   intersectionpoint(head, head2, 3);
 //    makeloop(head, 5);
 //    display(head);
 //    int k=2;
@@ -212,7 +262,7 @@ int main()
 //    removeloop(head);
 //    display(head);
 //    cout<<detection(head);
-   appendknodes(head, 3);
-   display(head);
+//    appendknodes(head, 3);
+//    display(head);
    return 0;
 }
