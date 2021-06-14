@@ -155,13 +155,7 @@ void appendknodes(node* &head, int k)
     node* newhead;
     node* newtail;
     node* tail = head;
-    int count=0;
-    while(tail != NULL)
-    {
-        tail= tail->next;
-        count++;
-    }
-    tail = head;
+    int count=counting(tail);
     int l=1;
     k=k%count;
     while(tail->next != NULL)
@@ -180,6 +174,18 @@ void appendknodes(node* &head, int k)
     tail->next = head;
     newtail->next = NULL;
     head = newhead;
+}
+
+// counting the number of elements in a linked list
+int counting(node* head)
+{
+    int l=0;
+    while(head != NULL)
+    {
+        head = head->next;
+        l++;
+    }
+    return l;
 }
 
 int main()
