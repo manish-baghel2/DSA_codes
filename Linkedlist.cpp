@@ -155,7 +155,7 @@ void appendknodes(node* &head, int k)
     node* newhead;
     node* newtail;
     node* tail = head;
-    int count=counting(tail);
+    int count=counting(head);
     int l=1;
     k=k%count;
     while(tail->next != NULL)

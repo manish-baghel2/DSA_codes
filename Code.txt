@@ -1,9 +1,6 @@
-this is the first sample file
+this is a backup repo for all my codes. i will dump my code folder here and update it from time to time. if any one wants to add some useful files they 
+can also contribute to this repo.
 
-
-just edited it again and learning the git user interface
-
-
-now i am adding just random things
-
-thinking
+language of code = C++
+level - beginner
+target - Competitive coding (4 start as of now )
