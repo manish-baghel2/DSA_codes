@@ -230,7 +230,7 @@ void intersectionpoint(node* &head, node* &head2, int k)
     {
         ptr1 = ptr1->next;
     }
-    cout<<ptr1->data<<endl;
+    
 }
 
 int main()

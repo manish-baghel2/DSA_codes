@@ -5,9 +5,9 @@ using namespace std;
 void ranges(int arr[], int n)
 {
     int ini = arr[0],end;
-    for(int i=0;i<n;i++)
+    for(int i=1;i<n;i++)
     {
-        if(arr[i]!=arr[i-1]+1 && i!=0)
+        if(arr[i]!=arr[i-1]+1)
         {
             end = arr[i-1];
             if(ini == end)
