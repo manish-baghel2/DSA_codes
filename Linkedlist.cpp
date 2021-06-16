@@ -292,42 +292,165 @@ node* mergerecursion(node* &head, node* &head2)
     return result;
 }
 
+// even numbers after odd numbers in a linked list
+void evenafterodd(node* &head)
+{
+    node* temp = head;
+    node* p1;
+    node* p2;
+    node* dummy1 = new node(-1);
+    node* dummy2 = new node(-2);
+    p1 = dummy1;
+    p2 = dummy2;
+    while(temp != NULL)
+    {
+        if(temp->data%2==1)
+        {
+            p1->next = temp;
+            p1=p1->next;
+        }else
+        {
+            p2->next = temp;
+            p2 = p2->next;
+        }
+        temp=temp->next;
+    }
+    p1->next = dummy2->next;
+    p2->next = NULL;
+    head = dummy1->next;
+    delete dummy1;
+    delete dummy2;
+}
+
+/* circular linked list programs*/
+
+// inserting elements at the head of circular linked list
+void insertathead(node* &head, int val)
+{
+    node* temp = head;
+    node* n = new node(val);
+    if(head == NULL)
+    {
+        n->next = n;
+        head = n;
+        return;
+    }
+    while(temp->next != head)
+    {
+        temp=temp->next;
+    }
+    temp->next = n;
+    n->next = head;
+    head = n;
+}
+
+// inserting elements at end of a circular linked list
+void insertattail(node* &head, int val)
+{
+    if(head == NULL)
+    {
+        insertathead(head, val);
+        return;
+    }
+    node* temp = head;
+    node* n = new node(val);
+    while(temp->next !=head)
+    {
+        temp=temp->next;
+    }
+    temp->next = n;
+    n->next = head;
+}
+
+// printing a circular linked list
+void display2(node* head)
+{
+    node* temp = head;
+    do
+    {
+        cout<<temp->data<<"->";
+        temp = temp->next;
+    } while (temp != head);
+    cout<<"NULL"<<endl;
+}
+
+//deletion in circular linked list
+void deletioncircular(node* &head, int val) 
+{
+    node* temp = head;
+    node* todelete;
+    if(val == 1)
+    {
+        todelete = head;
+        do
+        {
+            temp=temp->next;
+        } while (temp->next != head);
+        temp->next = head->next;
+        delete todelete;
+        head = temp->next;
+        return;
+    }
+    do
+    {
+        temp = temp->next;
+        --val;
+    } while (val != 1);
+    todelete = temp->next;
+    temp->next = temp->next->next;
+    delete todelete;
+}
+
 int main()
 {
    node* head = NULL;
-   node* head2 = NULL;
-   int ar1[] ={1, 4, 5, 7};
-   int ar2[] = {2, 3, 6};
-   for(int i:ar1)
-   {
-       insertatend(head, i);
-   }
-   for(int i: ar2)
-   {
-       insertatend(head2, i);
-   }
+//    node* head2 = NULL;
+//    int ar1[] ={1, 4, 5, 7};
+//    int ar2[] = {2, 3, 6};
+//    for(int i:ar1)
+//    {
+//        insertatend(head, i);
+//    }
+//    for(int i: ar2)
+//    {
+//        insertatend(head2, i);
+//    }
 //    display(head);
 //    display(head2);
-   node* newhead = mergerecursion(head, head2);
-   display(newhead);
-//    insertatend(head, 1);
-//    insertatend(head, 2);
-//    insertatend(head, 3);
-//    insertatend(head, 4);
-//    insertatend(head, 5);
-//    insertatend(head, 6);
-//    insertatend(head, 7);
-//    insertatend(head, 8);
-//    insertatend(head, 9);
-//    insertatend(head, 10);
-//    insertatend(head, 11);
+//    node* newhead = mergerecursion(head, head2);
+//    display(newhead);
+   insertatend(head, 1);
+   insertatend(head, 2);
+   insertatend(head, 3);
+   insertatend(head, 4);
+   insertatend(head, 5);
+   insertatend(head, 6);
+   insertatend(head, 7);
+   insertatend(head, 8);
+   insertatend(head, 9);
+   insertatend(head, 10);
+   insertatend(head, 11);
+   evenafterodd(head);
+//    insertattail(head, 1);
+//    insertattail(head, 2);
+//    insertattail(head, 3);
+//    insertattail(head, 4);
+//    insertattail(head, 5);
+//    insertattail(head, 6);
+//    insertattail(head, 7);
+//    insertattail(head, 8);
+//    insertattail(head, 9);
+//    insertattail(head, 10);
+//    insertattail(head, 11);
+//    deletioncircular(head, 2);
+//    display2(head);
 //    insertatend(head2, 12);
 //    insertatend(head2, 13);
 //    intersectat(head, head2, 3);
 //    display(head2);
 //    intersectionpoint(head, head2, 3);
 //    makeloop(head, 5);
-//    display(head);
+   display(head);
 //    int k=2;
 //    node* newhead = reversek(head, k);
 //    display(newhead);
