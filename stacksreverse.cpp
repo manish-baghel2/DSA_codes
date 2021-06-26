@@ -232,23 +232,51 @@ void infixtoprefix(string s)
 void balancedparenthesis(string s)
 {
     stack<char> st;
-    for(int i=0;i<s.length();i++)
+    bool ans = false;
+    for(int i=0;i<s.size();i++)
     {
-        if(st.empty() && s[i]!=st.top())
+        if(s[i] == '{' or s[i] == '[' or s[i] == '(')
         {
             st.push(s[i]);
-        }else if(st.top() == s[i])
+        }else if(s[i] == '}')
         {
-            st.pop();
+            if(!st.empty() and st.top() == '{')
+            {
+                st.pop();
+                ans = true;
+            }else
+            {
+                ans = false;
+            }
+        }else if(s[i] == ']')
+        {
+            if(!st.empty() and st.top() == '[')
+            {
+                st.pop();
+                ans = true;
+            }else
+            {
+                ans = false;
+            }
+        }else if(s[i] == ')')
+        {
+            if(!st.empty() and st.top() == '(')
+            {
+                st.pop();
+                ans = true;
+            }else
+            {
+                ans = false;
+            }
         }
     }
-    if(st.empty())
+    if(ans and st.empty())
     {
         cout<<"it is balanced"<<endl;
-        return;
+    }else
+    {
+        cout<<"it is not balanced"<<endl;
     }
-    cout<<false<<endl;
-    return;
 }
 
 int main(){
@@ -267,5 +295,5 @@ int main(){
     // infixtopostfix(s);
     infixtoprefix(s);
     // printstack(st);
-    balancedparenthesis("{[([)]}");
+    balancedparenthesis("{[([])]}");
 }
