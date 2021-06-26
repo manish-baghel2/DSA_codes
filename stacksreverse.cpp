@@ -183,6 +183,73 @@ void infixtopostfix(string s)
     cout<<res<<endl;
 }
 
+// program for infixtoprefix conversion
+void infixtoprefix(string s)
+{
+    string res;
+    stack<char> st;
+    for(int i=s.length()-1;i>=0;i--)
+    {
+        if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >='A' && s[i] <= 'Z'))
+        {
+            res+=s[i];
+        }else if(s[i] == ')')
+        {
+            st.push(s[i]);
+        }else if(s[i] == '(')
+        {
+            while(!st.empty() && st.top() != ')')
+            {
+                res+=st.top();
+                st.pop();
+            }
+            if(!st.empty())
+            {
+                st.pop();
+            }
+        }else
+        {
+            while(!st.empty() && prec(st.top())>=prec(s[i]))
+            {
+                res+= st.top();
+                st.pop();
+            }
+            st.push(s[i]);
+        }
+    }
+    while(!st.empty())
+    {
+        res+=st.top();
+        st.pop();
+    }
+    for(int i=res.length()-1;i>=0;i--)
+    {
+        cout<<res[i];
+    }cout<<endl;
+}
+
+// balanced parenthesis program
+void balancedparenthesis(string s)
+{
+    stack<char> st;
+    for(int i=0;i<s.length();i++)
+    {
+        if(st.empty() && s[i]!=st.top())
+        {
+            st.push(s[i]);
+        }else if(st.top() == s[i])
+        {
+            st.pop();
+        }
+    }
+    if(st.empty())
+    {
+        cout<<"it is balanced"<<endl;
+        return;
+    }
+    cout<<false<<endl;
+    return;
+}
 
 int main(){
     // stack<int> st;
@@ -197,6 +264,8 @@ int main(){
     // cout<<prefixevaluation("-+7*45+20")<<endl;
     // cout<<postfixevaluation("745*+20+-")<<endl;
     // cout<<postfixevaluation("46+2/5*7+")<<endl;
-    infixtopostfix(s);
+    // infixtopostfix(s);
+    infixtoprefix(s);
     // printstack(st);
+    balancedparenthesis("{[([)]}");
 }
