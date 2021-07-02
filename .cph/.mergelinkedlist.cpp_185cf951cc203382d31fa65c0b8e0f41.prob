@@ -1,0 +1,1 @@
+{"name":"Local: mergelinkedlist","url":"c:\\Users\\Manish Baghel\\Desktop\\code\\DSA_codes\\mergelinkedlist.cpp","tests":[{"id":1625224958473,"input":"4\n5 10 15 40\n3\n2 3 20","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Manish Baghel\\Desktop\\code\\DSA_codes\\mergelinkedlist.cpp","group":"local","local":true}
