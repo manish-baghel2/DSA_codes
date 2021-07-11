@@ -28,10 +28,6 @@ vector<int> NSR(vector<int> v)
         st.push(i);
     }
     reverse(ans.begin(), ans.end());
-
-    for(auto i:ans)
-        cout<<i<<" ";
-    cout<<endl;
     return ans;
 }
 
@@ -60,9 +56,6 @@ vector<int> NSL(vector<int> v)
         ans.push_back(st.top());
         st.push(i);
     } 
-    for(auto i: ans)
-        cout<<i<<" ";
-    cout<<endl;
     return ans;
 }
 
