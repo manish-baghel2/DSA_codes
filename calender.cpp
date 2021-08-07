@@ -7,7 +7,6 @@ class user
 
         vector<pair<string, pair<int, int> > > events;
         string name;
-        public:
         user()
         {
         }
@@ -82,7 +81,7 @@ class user
             // }
         }
 
-        
+
 };
 
 int main()
