@@ -327,14 +327,53 @@ void rightview(node* root)
     }
 }
 
+bool getpath(node* root, int k, vector<int> &path)
+{
+    if(root == NULL)
+    {
+        return false;
+    }
+    path.push_back(root->data);
+    if(root->data == k)
+    {
+        return true;
+    }
+    if(getpath(root->left, k, path) || getpath(root->right, k, path))
+    {
+        return true;
+    }
+    path.pop_back();
+    return false;
+}
+
+int LCA(node* root, int n1, int n2)
+{
+    vector<int> path1, path2;
+    if(!getpath(root, n1, path1 ) || !getpath(root, n2, path2))
+    {
+        return -1;
+    }
+
+    int pc;
+    for(pc=0;pc< path1.size() and pc < path2.size() ; pc++)
+    {
+        if(path1[pc] != path2[pc])
+        {
+            break;
+        }
+    }
+    return path1[pc-1];
+}
+
 int main()
 {
     struct node* root = new node(1);
     root->left = new node(2);
     root->right = new node(3);
     root->left->left = new node(4);
-    root->left->right = new node(5);
-    root->right->left = new node(6);
+    // root->left->right = new node(5);
+    root->right->left = new node(5);
+    root->right->left->left = new node(6);
     root->right->right = new node(7);
     // cout<<"this is preorder traversal"<<endl;
     // preorder(root);
@@ -369,5 +408,6 @@ int main()
     // }else{
     //     cout<<"it is not balanced";
     // }
-    rightview(root);
+    // rightview(root);
+    cout<<LCA(root, 5, 7);
 }
