@@ -365,6 +365,39 @@ int LCA(node* root, int n1, int n2)
     return path1[pc-1];
 }
 
+node* lca2(node* root, int n1, int n2)
+{
+    if(root == NULL)
+    {
+        return NULL;
+    }
+    if(root->data == n1 || root->data == n2)
+    {
+        return root;
+    }
+    node* leftlca = lca2(root->left, n1, n2);
+    node* rightlca = lca2(root->right, n1,n2);
+    if(leftlca and rightlca)
+    {
+        return root;
+    }
+    if(leftlca != NULL)
+    {
+        return leftlca;
+    }
+    return rightlca;
+}
+
+int shortpath(node* root, int n1, int n2)
+{
+    node* lca = lca2(root, n1, n2);
+    vector<int> path1, path2;
+    getpath(lca, n1, path1);
+    getpath(lca, n2, path2);
+    int ans = path1.size() + path2.size() -2 ;
+    return ans;
+}
+
 int main()
 {
     struct node* root = new node(1);
@@ -409,5 +442,7 @@ int main()
     //     cout<<"it is not balanced";
     // }
     // rightview(root);
-    cout<<LCA(root, 5, 7);
+    // cout<<LCA(root, 5, 7);
+    // cout<<lca2(root, 3, 5)->data;
+    cout<<shortpath(root, 5, 3);
 }
