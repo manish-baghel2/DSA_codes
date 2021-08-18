@@ -40,6 +40,26 @@ void inorder(node* root)
     inorder(root->right);
 }
 
+node* search(node* root, int val)
+{
+    if(root == NULL)
+    {
+        return NULL;
+    }
+    if(root->data == val)
+    {
+        return root;
+    }
+
+    if(val > root->data)
+    {
+        return search(root->right, val);
+    }else if(val < root->data)
+    {
+        return search(root->left, val);
+    }
+}
+
 int main()
 {
     int arr[] = {5, 1, 3, 4, 2, 7};
@@ -50,4 +70,6 @@ int main()
         insertBST(root, arr[i]);
     }
     inorder(root);
+    cout<<endl;
+    cout<<search(root, 1)->data;
 }
