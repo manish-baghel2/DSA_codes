@@ -60,6 +60,66 @@ node* search(node* root, int val)
     }
 }
 
+node* searchBST(node* root, int k)
+{
+    if(root == NULL)
+    {
+        return NULL;
+    }
+    if(root->data == k )
+    {
+        return root;
+    }
+    if(root->data > k)
+    {
+        return searchBST(root->left, k);
+    }
+    if(root->data < k)
+    {
+        return searchBST(root->right, k);
+    }
+}
+
+node* inordersucc(node* root)
+{
+    node* temp = root;
+    while(temp && temp->left != NULL)
+    {
+        temp = temp->left;
+    }
+    return temp;
+}
+
+node* deleteBST(node* root, int k)
+{
+    if(k < root->data)
+    {
+        root->left = deleteBST(root->left, k);
+    }else if(k > root->data)
+    {
+        root->right = deleteBST(root->right, k);
+    }else 
+    {
+        if(root->left == NULL)
+        {
+            node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        if(root->right == NULL)
+        {
+            node* temp = root->left;
+            free(root);
+            return temp;
+        }
+        
+        node* temp = inordersucc(root->right);
+        root->data = temp->data;
+        root->right = deleteBST(root->right, temp->data);
+    }
+    return root;
+}
+
 int main()
 {
     int arr[] = {5, 1, 3, 4, 2, 7};
@@ -71,5 +131,15 @@ int main()
     }
     inorder(root);
     cout<<endl;
-    cout<<search(root, 1)->data;
+    // cout<<search(root, 1)->data;
+    // if(searchBST(root, 4) == NULL)
+    // {
+    //     cout<<" this doesnt exist in the BST";
+    // }else{
+    //     cout<<" this exists in the BST";
+    // }
+    inorder(root);
+    cout<<endl;
+    deleteBST(root, 3);
+    inorder(root);
 }

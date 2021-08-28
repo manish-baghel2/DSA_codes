@@ -1,3 +1,5 @@
+
+// this is a scrap file just there to test various code snippets or syntax to verify there functionalities
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -67,6 +69,17 @@ int solution(vector<int> &A, int S) {
     return count;
 }
 
+void display(vector<vector<int>> board)
+{
+    for(int i=0;i<board.size();i++)
+    {
+        for(int j=0;j<board[0].size();j++)
+        {
+            cout<<board[i][j]<<" ";
+        }cout<<endl;
+    }
+}
+
 int main()
 {
     // vector<vector<int>> A = {
@@ -82,8 +95,49 @@ int main()
     // string n = "1", m = "21", temp;
     // temp = n+m;
     // cout<<temp;
-    vector<int> v = {2, 1, 3};
-    int k = 2;
-    int ans = solution(v, k);
-    cout<<ans;
+    // vector<int> v = {2, 1, 3};
+    // int k = 2;
+    // int ans = solution(v, k);
+    // cout<<ans;
+    // vector<vector<int>> v;
+    // for(int i=0;i<5;i++)
+    // {
+    //     // for(int j=0;j<4;j++)
+    //     // {
+    //     //     int s;
+    //     //     cin>>s;
+    //     //     v[i][j] = s;
+    //     // }
+    //     int s;
+    //     cin>>s;
+    //     v[i] = s;
+    // }
+    // int i, j;cin>>i;cin>>j;
+    // int v[i][j];
+    // for(int a=0;a<i;a++)
+    // {
+    //     for(int b=0;b<j;b++)
+    //     {
+    //         cin>>v[a][b];
+    //     }
+    // }
+    // display(v);
+    // for(auto i:v)
+    // {
+    //     cout<<i<<" ";
+    // }cout<<endl;
+    vector<vector<int>> board;
+    int i, j;cin>>i;cin>>j;
+    vector<vector<int>> board(i);
+    for(int a=0;a<i;a++)
+    {
+        for(int b=0;b<j;b++)
+        {
+            int s;
+            cin>>s;
+            board[i].push_back(s);
+        }
+    }
+    // sudoku_solver(board, 0, 0);
+    display(board);
 }
