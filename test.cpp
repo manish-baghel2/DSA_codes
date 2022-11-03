@@ -213,12 +213,15 @@ int main()
     //     }
     //     cout<<i<<" ";
     // }
-    vector<int> a = {1,2,3,445,6,6,45,4};
-    for (int i = 0; i < a.size(); i++) {
-    if (a[i]%2 != 0) {
-      continue;
-    }
-    cout << a[i] << "\n";
-    }
+    // vector<int> a = {1,2,3,445,6,6,45,4};
+    // for (int i = 0; i < a.size(); i++) {
+    // if (a[i]%2 != 0) {
+    //   continue;
+    // }
+    // cout << a[i] << "\n";
+    // }
+    int i = 5;
+    int a= ++i+i--;
+    cout<<a;
     return 0;
 }
