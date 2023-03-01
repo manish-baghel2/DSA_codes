@@ -24,6 +24,6 @@ int main()
     string rs = "AGGTAB";
     string s = rs;
     reverse(rs.begin(),rs.end());
-    cout<<endl<<lcs(rs,s);
+    cout<<endl<<lcs(s,rs);
     return 0;
 }
