@@ -3,6 +3,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+class MyClass {
+public:
+    int x;
+    char c;
+    double d;
+};
+
+
 int maxSubArray(const vector<int> A)
 {
     int sum=0, maxsum =INT_MIN, i=0;
@@ -134,6 +142,10 @@ void display(vector<vector<int>> board)
 
 int main()
 {
+    MyClass* obj1 = new MyClass;
+    MyClass* obj2 = new MyClass;
+    // cout<<((char*)(obj1+1) - (char*)obj1);
+    cout<<sizeof(obj1);
     /*// vector<vector<int>> A = {
     //                             // { 1, 2, 3 },
     //                             // { 4, 5, 6 },
@@ -220,8 +232,8 @@ int main()
     // }
     // cout << a[i] << "\n";
     // }
-    int i = 5;
-    int a= ++i+i--;
-    cout<<a;
+    // int i = 5;
+    // int a= ++i+i--;
+    // cout<<a;
     return 0;
 }
