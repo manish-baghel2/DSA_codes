@@ -4,7 +4,7 @@ using namespace std;
 int main(){
     int arr[] = {1, 2, 3, 4, 5};
     int n;
-    cout<<"enter "
+    cout<<"enter ";
     cin>>n;
     int count = 0;
     while(count< n){
