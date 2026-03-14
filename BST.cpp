@@ -58,6 +58,7 @@ node* search(node* root, int val)
     {
         return search(root->left, val);
     }
+    return root;
 }
 
 node* searchBST(node* root, int k)
@@ -78,6 +79,7 @@ node* searchBST(node* root, int k)
     {
         return searchBST(root->right, k);
     }
+    return root;
 }
 
 node* inordersucc(node* root)
